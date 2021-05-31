@@ -26,6 +26,9 @@ public class Users {
 
 
 
+	
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -208,7 +211,9 @@ public class Users {
 	}
 
 
-
+	public void setUserGroup(UserGroup userGroup) {
+		this.userGroup = userGroup;
+	}
 
 	
 	

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.amalitech.userServices.Entity.Department;
 import org.amalitech.userServices.Repository.DepartmentRepository;
+import org.amalitech.userServices.dto.DepartmentDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,8 +29,10 @@ public class DepartmentService {
 		 }
 	 
 
-		public Department updateDept(Department dept) {
-			return this.departRepository.save(dept);
+		public Department updateDept(DepartmentDto deptDto) {
+			Department depart =departRepository.findById(deptDto.deptId).orElseThrow();
+			depart.setDepartname(deptDto.departName);
+			return this.departRepository.save(depart);
 		}
 		
 

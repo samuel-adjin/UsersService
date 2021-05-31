@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.amalitech.userServices.Entity.UserGroup;
 import org.amalitech.userServices.Repository.UserGroupRepository;
+import org.amalitech.userServices.dto.UserGroupDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +27,9 @@ public class UserGroupService {
 	}
 	
 	
-	public UserGroup updateUserGroup(UserGroup group) {
+	public UserGroup updateUserGroup(UserGroupDto groupDto) {
+		UserGroup group = userGroupRepository.findById(groupDto.groupId).orElseThrow();
+		group.setName(groupDto.name);
 		return this.userGroupRepository.save(group);
 	}
 	 public void deleteUserGroup(int usergroupId) {

@@ -13,7 +13,7 @@ public class UserGroupDto {
 		this.groupId = groupId;
 	}
 
-	private String name;
+	public String name;
 
 	public String getName() {
 		return name;

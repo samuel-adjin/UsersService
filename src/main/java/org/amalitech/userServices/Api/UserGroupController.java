@@ -39,9 +39,7 @@ public class UserGroupController {
 
 	@PutMapping
 	public UserGroup updateUserGroup(@RequestBody UserGroupDto groupDto) {
-		UserGroup usergroup = new UserGroup();
-		usergroup.setName(groupDto.getName());
-		return this.userGroupService.updateUserGroup(usergroup);
+		return this.userGroupService.updateUserGroup(groupDto);
 	}
 	
 	@DeleteMapping("/{id}")

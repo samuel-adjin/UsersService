@@ -40,9 +40,7 @@ public class DepartmentController {
 	
 	@PutMapping
 	public Department updateDept(@RequestBody DepartmentDto deptDto) {
-		Department dept = new Department();
-		dept.setDepartname(deptDto.getDepartName());
-		return this.departService.updateDept(dept);
+		return this.departService.updateDept(deptDto);
 	}
 	
 	@DeleteMapping("/{id}")

@@ -69,10 +69,14 @@ public class UsersService {
 	 
 	
 	 public Users updateUsers(UsersDto userDto) {
-		 UserGroup userGroup = this.userGroupRepository.findById(userDto.groupId).orElseThrow();
-		 Department depart =   this.departRepository.findById(userDto.deptId).orElseThrow();
-		 Users user = new Users(userDto.id, userDto.username, userDto.email,userGroup,depart);
-	     return this.usersRepository.save(user); 
+		Users users = usersRepository.findById(userDto.id).orElseThrow();
+		Department dept = departRepository.findById(userDto.deptId).get();
+		UserGroup group = userGroupRepository.findById(userDto.groupId).get();
+		users.setDepartment(dept);
+		users.setUserGroup(group);
+		users.setEmail(userDto.email);
+		users.setName(userDto.username);
+	     return this.usersRepository.save(users); 
 	 
 	 }
 	 
